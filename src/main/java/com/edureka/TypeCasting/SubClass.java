@@ -34,7 +34,7 @@ public class SubClass extends SuperClass {
         subClass2.c1();
         subClass2.c2();
         subClass2.c3();
-        subClass2.c4();q
+        subClass2.c4();
     }
 
 }
