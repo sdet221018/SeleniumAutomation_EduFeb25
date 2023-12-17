@@ -32,7 +32,6 @@ public class BaseTest {
         }
         else {
             System.out.println("Valid browser is not provided, hence quitting the automation run.");
-            System.exit(0);
         }
 
         if (url != "")
@@ -42,5 +41,6 @@ public class BaseTest {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.manage().window().maximize();
+        System.exit(0);
     }
 }
