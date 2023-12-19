@@ -52,22 +52,20 @@ public class BaseTest {
         // To refresh the browser
         driver.navigate().refresh();
         System.out.println("The Browser is refreshed Now.");
-
-        // Close the Browser
-        //driver.close();
-
-        // Close all the Tabs of the Browser
-        //driver.quit();
     }
 
     public void identifyElements() throws InterruptedException {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
+        Thread.sleep(3000);
+
         WebElement email = driver.findElement(By.id("email"));
+        email.clear();
         email.sendKeys("rakeshSinghraks");
 
         WebElement password = driver.findElement(By.id("pass"));
+        password.clear();
         password.sendKeys("hakoonamatata");
 
         driver.findElement(By.name("login")).click();
@@ -98,6 +96,24 @@ public class BaseTest {
         boolean statusOfRadioButton = male.isSelected();
         System.out.println("Status of Male Radio Button = " + statusOfRadioButton);
 
+        // Sign Up Button
+        WebElement SignUp = driver.findElement(By.name("websubmit"));
 
+        String fontFamily = SignUp.getCssValue("font-family");
+        System.out.println("The FontFamily of Sign Up Button is " + fontFamily);
+
+        // How to get the attribute value of a WebElement
+        String attribute = SignUp.getAttribute("type");
+        System.out.println("The attribute value of the WebElement " + SignUp + " is " + attribute);
+
+        SignUp.click();
+    }
+
+    public void TearDownBrowser() {
+        // Close the Browser
+        //driver.close();
+
+        // Close all the Tabs of the Browser
+        driver.quit();
     }
 }

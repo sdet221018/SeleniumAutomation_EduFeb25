@@ -17,6 +17,8 @@ public class WebElementAPI extends BaseTest {
         // Identify the WebElements of the Facebook Login page
         WebElemAPIchrome.identifyElements();
 
+        WebElemAPIchrome.TearDownBrowser();
+
         System.exit(0);
     }
 }
