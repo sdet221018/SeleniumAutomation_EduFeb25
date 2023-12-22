@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -36,6 +38,9 @@ public class BaseTest {
             System.out.println("Valid browser is not provided, hence quitting the automation run.");
         }
 
+        // Implicitly Wait / Global Wait
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2000));
+
         if (url != "")
             driver.get(url);
         else
@@ -54,11 +59,11 @@ public class BaseTest {
         System.out.println("The Browser is refreshed Now.");
     }
 
-    public void identifyElements() throws InterruptedException {
+    public void identifyElements() {
+//        Thread.sleep(3000);
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-
-        Thread.sleep(3000);
+        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(3000));
+        wait1.until(ExpectedConditions.elementToBeClickable(By.id("email")));
 
         WebElement email = driver.findElement(By.id("email"));
         email.clear();
@@ -70,7 +75,7 @@ public class BaseTest {
 
         driver.findElement(By.name("login")).click();
 
-        Thread.sleep(3000);
+//        Thread.sleep(3000);
 
 ////        WebElement error = driver.findElement(By.className("_9ay7"));
 //
@@ -83,13 +88,19 @@ public class BaseTest {
         // Capture logo WebElement
         WebElement logo = driver.findElement(By.xpath("//img[@alt='Facebook']"));
 
+//        driver.navigate().back();
+
         // Check if logo is displayed on the screen
         boolean statusofLogo = logo.isDisplayed();
         System.out.println("Is the Logo present on the Screen ? " + statusofLogo);
 
         // Click on Create New Account button
-
         WebElement CreateNewAccount = driver.findElement(By.xpath("//a[@role=\"button\" and text() = 'Create new account']"));
+
+        // Explicitly Wait / Local Wait
+        WebDriverWait wait2 = new WebDriverWait(driver,Duration.ofSeconds(20));
+        wait2.until(ExpectedConditions.elementToBeClickable(CreateNewAccount));
+
         CreateNewAccount.click();
 
         WebElement male = driver.findElement(By.xpath("//input[@value='2']"));

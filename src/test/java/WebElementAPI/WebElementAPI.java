@@ -11,13 +11,18 @@ public class WebElementAPI extends BaseTest {
         WebElementAPI WebElemAPIedge = new WebElementAPI();
 
 //        WebElemAPIedge.setupBrowser("edge", "https://www.facebook.com/");
-//        WebElemeAPIfirefox.setupBrowser("firefox", "https://www.ticketstoindia.com/");
-        WebElemAPIchrome.setupBrowser("chrome", "https://www.facebook.com/");
+        WebElemeAPIfirefox.setupBrowser("firefox", "https://www.facebook.com/");
+//        WebElemAPIchrome.setupBrowser("chrome", "https://www.facebook.com/");
 
         // Identify the WebElements of the Facebook Login page
-        WebElemAPIchrome.identifyElements();
+//        WebElemAPIchrome.identifyElements();
+        Thread.sleep(3000);
+        WebElemeAPIfirefox.identifyElements();
+//        WebElemAPIedge.identifyElements();
 
-        WebElemAPIchrome.TearDownBrowser();
+//        WebElemAPIchrome.TearDownBrowser();
+        WebElemeAPIfirefox.TearDownBrowser();
+//        WebElemAPIedge.TearDownBrowser();
 
         System.exit(0);
     }
